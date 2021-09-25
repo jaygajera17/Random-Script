@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How To Generate QR Code Using Javascript</title>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css" media="screen">
 * {  
@@ -61,7 +63,22 @@ body {
     color: #fff;
     transition: 0.3s;
     margin: 0 0 25px 0;
+    cursor: pointer;
 }
+.main .minibtn{
+    width: 90%;
+    padding: 12px 0;
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    background: #2b88be;
+    color: #fff;
+    transition: 0.3s;
+    margin: 0 0 25px 0;
+    cursor: pointer;
+    visibility: hidden;
+}
+
 .main .code {
     margin: 25px 0;
 }
@@ -92,9 +109,11 @@ body {
 <body>
     <div class="main">
         <p> Generate QR Code </p>
-        <input type="text" class="input" value="" id="textvalue">
-        <button class="btn">Generate</button>
-        <img src="images/default.png" alt="Your QR Code will be show here..." class="code">
+        <input type="text" class="input" value="" id="textvalue" placeholder="Paste Your Link Here">
+        <button class="btn">Generate</button>  
+        <img src="Image/qr-code.png" alt="Your QR Code will be show here..." class="code" height="300" width="75">
+        <button class="minibtn" id="copy">Copy QR Code Link To Clipboard</button>
+        <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <p id="note">Made with ♥ by Random Script</p>
     </div>
     <div id="toast">Successfully Generated</div> 
@@ -111,30 +130,26 @@ body {
     var toast = document.querySelector('#toast');
     btn.addEventListener("click",generate);
     function generate() {    
-        var data = $('#textvalue').val();    
-        var url = `https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}`;
-        
-        code.src = url;
-        toastDiv();
-        
+        var data = $('#textvalue').val();
+        window.url = `https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}`;
+        code.src = window.url;
+        toastDiv("Your QR Code Generated Successfully..!!!!!");
+        document.querySelector('.minibtn').style.visibility="visible";
     }
-    function toastDiv() {
-       
+    function toastDiv(msg) {
+        toast.innerHTML=msg;
         toast.className = "show";
+
         setTimeout( function() {
             toast.className = toast.className.replace("show" , "");
         },2000);
-
-       
-        
     }
-    
-
-   function link(){
-    var data = $('#textvalue').val();   
-    document.write(`https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}`);
-    alert("https://api.qrserver.com/v1/create-qr-code/?size=165x165&data= "+  $('#textvalue').val());
-   }
+    // copy to clipboard
+    const getCopy=document.getElementById("copy");
+    getCopy.addEventListener('click',(event)=>{
+        toastDiv("Copied To Clipboard Successfully");
+        navigator.clipboard.writeText(window.url);
+    });
    
     
     </script>
