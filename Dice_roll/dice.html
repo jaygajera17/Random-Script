@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animated 3D Dice Roller Example</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="dice.css" rel="stylesheet" type="text/css">
+
+    <link href="dice2.css" rel="stylesheet" type="text/css" />
+
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(45deg, #004b1a, #267a46);
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .demo__button {
+        margin-top: 20px;
+      }
+
+      .demo__footer {
+        position: fixed;
+        bottom: 20px;
+      }
+
+      .demo__link {
+        color: #000;
+        text-decoration: none;
+      }
+
+      .demo__link:hover {
+        text-decoration: underline;
+      }
+      h1,p { color: #fff; }
+    </style>
+  </head>
+  <body>
+<h1>Animated 3D Dice Roller </h1>
+
+
+<p>An animated virtual dice roller that allows you to roll dice for random numbers (from 1 to 6).</p>
+    <!-- Dice -->
+    <div class="dice__scene">
+      <div id="dice__cube" class="show-front">
+        <div class="dice__side dice__side--front"></div>
+    		<div class="dice__side dice__side--back"></div>
+    		<div class="dice__side dice__side--right"></div>
+    		<div class="dice__side dice__side--left"></div>
+    		<div class="dice__side dice__side--top"></div>
+    		<div class="dice__side dice__side--bottom"></div>
+      </div>
+    </div>
+
+    <audio preload="auto" id="dice__audio">
+    	<source src="./assets/sounds/dice-sound.mp3"></source>
+    </audio>
+    <!-- /Dice -->
+
+    <button class="demo__button" id="dice__btn">Roll the dice</button>
+    &nbsp;
+<pre    style="font-size: 19px" >                                                                     made with ❤ by random-script</pre>
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script> </script></script> 
+    <script src="dice.js"></script>
+    <script type="text/javascript">
+
+ 
