@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="dice.css" rel="stylesheet" type="text/css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <link href="dice2.css" rel="stylesheet" type="text/css" />
 
     <style>
@@ -22,40 +22,67 @@
       }
 
       body {
-        display: flex;
+      display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-image: linear-gradient(45deg, #004b1a, #267a46);
+        background-image:linear-gradient(to right top,#b597f6,#439cfb);
         margin: 0;
         font-family: sans-serif;
+        background-size: cover;
+       
       }
+      .btn {
+    width: 30%;
+    padding: 12px 0;
+    outline: none;
+    border: 2px solid #7c00cf;
+    border-radius: 5px;
+    background: #439cfb;
+    color: #fff;
+    transition: 0.3s;
+    margin: 0 0 25px 0;
+    box-shadow: 0 10px 25px -10px #439cfb;
+}
+.box{
+width: 60%;
+height: 100%;
+padding: 50px 15px;
+margin-top: 25px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background: #fff;
+box-shadow: 0 10px 25px -10px rgba(0,0,0,0.5);
+border-radius: 5px;
+/*padding-top: 30px;
+padding: 30px;*/
 
-      .demo__button {
-        margin-top: 20px;
-      }
+}
 
-      .demo__footer {
-        position: fixed;
-        bottom: 20px;
-      }
+.box h2{
+margin-bottom: 36px;
+text-align: center;
+font-size: 36px;
+color: #015a96;
+font-family: sans-serif;
 
-      .demo__link {
-        color: #000;
-        text-decoration: none;
-      }
+}
 
-      .demo__link:hover {
-        text-decoration: underline;
-      }
+
+     
       h1,p { color: #fff; }
     </style>
   </head>
   <body>
-<h1>Animated 3D Dice Roller </h1>
+      <div class="box">
+<h2>Animated 3D Dice Roller </h2>
 
 
-<p>An animated virtual dice roller that allows you to roll dice for random numbers (from 1 to 6).</p>
+<font color="#015a96"
+font-family="sans-serif";>An animated virtual dice roller that allows you to roll dice for random numbers (from 1 to 6).</font>
+&nbsp;
     <!-- Dice -->
     <div class="dice__scene">
       <div id="dice__cube" class="show-front">
@@ -67,15 +94,18 @@
     		<div class="dice__side dice__side--bottom"></div>
       </div>
     </div>
+      
 
     <audio preload="auto" id="dice__audio">
     	<source src="./assets/sounds/dice-sound.mp3"></source>
     </audio>
     <!-- /Dice -->
 
-    <button class="demo__button" id="dice__btn">Roll the dice</button>
-    &nbsp;
-<pre    style="font-size: 19px" >                                                                     made with ❤ by random-script</pre>
+&nbsp;
+
+    <button class="btn" id="dice__btn" >Roll the dice</button></div>
+    &nbsp; 
+<pre    style="font-size: 19px" >                                                                     made with &#10084;&#65039; by random-script</pre>
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script> </script></script> 
     <script src="dice.js"></script>
     <script type="text/javascript">
