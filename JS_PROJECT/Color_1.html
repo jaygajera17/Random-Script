@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="theme-color" content="#9d4edd">
+
+    <title>Random Color Generator</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .max-screen {
+        min-width: 100vw;
+        min-height: 100vh;
+        background: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+        transition: 0.7s ease;
+
+    }
+
+    h2 {
+        letter-spacing: 5px;
+        text-shadow: 2px 7px 2px rgba(0, 0, 0, 0.3),
+            0px -4px 15px rgba(255, 255, 255, 0.3);
+        font-family: 'Exo 2', sans-serif;
+        color: cornsilk;
+        padding-top: 75px;
+    }
+
+    .box {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 10vh;
+        width: 28vw;
+        margin: 35px 35vw;
+        padding: 12px;
+        border-radius: 10px;
+        background-color: seashell;
+    }
+
+    #bgc {
+        font-size: 35px;
+    }
+
+    @media screen and (max-width: 643px) {
+        .box {
+            min-height: 15vh;
+            width: 33vw;
+            padding: 2px 5px;
+            margin: 25px 33vw;
+            font-size: 20px;
+        }
+
+        #bgc {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    #toast {
+        position: absolute;
+        bottom: 0;
+        border-radius: 5px;
+        padding: 15px 50px;
+        background: #07f49e;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0 10px 25px -10px #07f49e;
+        transition: 0.3s;
+    }
+
+    #toast.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: 50px;
+    }
+
+    .btn {
+        margin: 25px 25px;
+        font-size: 1.2rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .btn:hover{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+</style>
+
+<body>
+
+    <div class="max-screen">
+
+        <h2 class="text-center text-white">Random Color Picker</h2>
+        <div class="box">
+            <span id="bgc">#FFBBGG</span>
+        </div>
+        <div class="text-center">
+            <span><button type="button" class="btn btn-dark bg-dark text-white" onclick="myFuntion()">Change
+                    Color</button></span>
+            <button type="button" class="btn btn-dark bg-dark m-10" id="copy">Copy Color Code</button>
+        </div>
+
+        <div id="toast">Successfully Generated</div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <Script>
+
+        const color = ['White', 'Silver', 'Gray', 'Black', 'Red', 'Maroon', 'Yellow', 'Olive', 'Lime', 'Green', 'Aqua', 'Teal', 'Blue', 'Navy', 'Fuchsia', 'Purple', 'MediumVioletRed', 'DeepPink', 'PaleVioletRed', 'HotPink', 'LightPink', 'Pink', 'DarkRed', 'Red', 'Firebrick', 'Crimson', 'IndianRed', 'LightCoral', 'Salmon', 'DarkSalmon', 'LightSalmon', 'OrangeRed', 'Tomato', 'DarkOrange', 'Coral', 'Orange', 'DarkKhaki', 'Gold', 'Khaki', 'PeachPuff', 'Yellow', 'PaleGoldenrod', 'Moccasin', 'PapayaWhip', 'LightGoldenrodYellow', 'LemonChiffon', 'LightYellow', 'Maroon', 'Brown', 'SaddleBrown', 'Sienna', 'Chocolate', 'DarkGoldenrod', 'Peru', 'RosyBrown', 'Goldenrod', 'SandyBrown', 'Tan', 'Burlywood', 'Wheat', 'NavajoWhite', 'Bisque', 'BlanchedAlmond', 'Cornsilk', 'DarkGreen', 'Green', 'DarkOliveGreen', 'ForestGreen', 'SeaGreen', 'Olive', 'OliveDrab', 'MediumSeaGreen', 'LimeGreen', 'Lime', 'SpringGreen', 'MediumSpringGreen', 'DarkSeaGreen', 'MediumAquamarine', 'YellowGreen', 'LawnGreen', 'Chartreuse', 'LightGreen', 'GreenYellow', 'PaleGreen', 'Teal', 'DarkCyan', 'LightSeaGreen', 'CadetBlue', 'DarkTurquoise', 'MediumTurquoise', 'Turquoise', 'Aqua', 'Cyan', 'Aquamarine', 'PaleTurquoise', 'LightCyan', 'Navy', 'DarkBlue', 'MediumBlue', 'Blue', 'MidnightBlue', 'RoyalBlue', 'SteelBlue', 'DodgerBlue', 'DeepSkyBlue', 'CornflowerBlue', 'SkyBlue', 'LightSkyBlue', 'LightSteelBlue', 'LightBlue', 'PowderBlue', 'Indigo', 'Purple', 'DarkMagenta', 'DarkViolet', 'DarkSlateBlue', 'BlueViolet', 'DarkOrchid', 'Fuchsia', 'Magenta', 'SlateBlue', 'MediumSlateBlue', 'MediumOrchid', 'MediumPurple', 'Orchid', 'Violet', 'Plum', 'Thistle', 'MistyRose', 'AntiqueWhite', 'Linen', 'Beige', 'WhiteSmoke', 'LavenderBlush', 'OldLace', 'AliceBlue', 'Seashell', 'GhostWhite', 'Honeydew', 'FloralWhite', 'Azure', 'MintCream', 'Snow', 'Ivory', 'White', 'Black', 'DarkSlateGray', 'DimGray', 'SlateGray', 'Gray', 'LightSlateGray', 'DarkGray', 'Silver', 'LightGray', 'Gainsboro'];
+        let btn = document.getElementById("btn");
+        var toast = document.querySelector('#toast');
+        var bg = document.querySelector('.max-screen');
+        function myFuntion() {
+            const randomNumber = randomColor();
+            bg.style.background = color[randomNumber];
+            document.querySelector('#bgc').innerHTML = " " + color[randomNumber];
+        }
+
+        function randomColor() {
+            return Math.floor(Math.random() * 154);
+        }
+        function toastDiv(msg) {
+            toast.innerHTML = msg;
+            toast.className = "show";
+
+            setTimeout(function () {
+                toast.className = toast.className.replace("show", "");
+            }, 2000);
+        }
+        // copy to clipboard
+        const getCopy = document.getElementById("copy");
+        getCopy.addEventListener('click', (event) => {
+            toastDiv("Copied To Clipboard Successfully");
+            navigator.clipboard.writeText(bgc.innerHTML);
+        });
+    </Script>
+</body>
+
+</html>
