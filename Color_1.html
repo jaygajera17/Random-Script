@@ -1,166 +1,283 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Code Generator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="theme-color" content="#9d4edd">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <title>Random Color Generator</title>
-</head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    .max-screen {
-        min-width: 100vw;
-        min-height: 100vh;
-        background: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-        transition: 0.7s ease;
 
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-    h2 {
-        letter-spacing: 5px;
-        text-shadow: 2px 7px 2px rgba(0, 0, 0, 0.3),
-            0px -4px 15px rgba(255, 255, 255, 0.3);
-        font-family: 'Exo 2', sans-serif;
-        color: cornsilk;
-        padding-top: 75px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
 
-    .box {
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        min-height: 10vh;
-        width: 28vw;
-        margin: 35px 35vw;
-        padding: 12px;
-        border-radius: 10px;
-        background-color: seashell;
-    }
+        html,
+        body {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            background-color: #0beef9;
+            background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%);
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
 
-    #bgc {
-        font-size: 35px;
-    }
+        .wrapper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
 
-    @media screen and (max-width: 643px) {
-        .box {
-            min-height: 15vh;
-            width: 33vw;
-            padding: 2px 5px;
-            margin: 25px 33vw;
+        .container-fostrap {
+            display: table-cell;
+            padding: 1em;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .fostrap-logo {
+            width: 100px;
+            margin-bottom: 15px
+        }
+
+        .btn2 {
+            margin-left: 85px
+        }
+
+        #button:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .box #note {
+            font-size: 1.2rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+        .navbar {
+            background-color: black;
+            opacity: 0.9;
+            z-index: 999;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .nav-item a {
+            color: white;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.5s ease;
+        }
+
+        .nav-item a:hover {
+            color: rgb(0, 195, 255);
+            border-bottom: 1px solid rgb(0, 195, 255);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 600;
             font-size: 20px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+
+        .max-screen {
+            min-width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+            transition: 0.7s ease;
+        }
+
+        .box {
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 10vh;
+            width: 28vw;
+            margin: 35px 32vw;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: seashell;
         }
 
         #bgc {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 35px;
         }
-    }
 
-    #toast {
-        position: absolute;
-        bottom: 0;
-        border-radius: 5px;
-        padding: 15px 50px;
-        background: #07f49e;
-        opacity: 0;
-        visibility: hidden;
-        box-shadow: 0 10px 25px -10px #07f49e;
-        transition: 0.3s;
-    }
+        @media screen and (max-width: 643px) {
+            .box {
+                min-height: 15vh;
+                width: 33vw;
+                padding: 2px 5px;
+                margin: 25px 30vw;
+                font-size: 20px;
+            }
 
-    #toast.show {
-        visibility: visible;
-        opacity: 1;
-        bottom: 50px;
-    }
+            #bgc {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
 
-    .btn {
-        margin: 25px 25px;
-        font-size: 1.2rem;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    .btn:hover{
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-</style>
 
-<body>
+        .btn {
+            margin: 25px 25px;
+            font-size: 1.2rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .btn:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #toast {
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+            padding: 15px 50px;
+            background: black;
+            opacity: 0;
+            color: white;
+            font-weight: 500;
+            visibility: hidden;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            transition: 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1000;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<section class="wrapper">
 
     <div class="max-screen">
-
-        <h2 class="text-center text-white">Random Color Picker</h2>
-        <div class="box">
-            <span id="bgc">#FFBBGG</span>
+        <div class="container-fostrap">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Random Script</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Exit</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <div class="text-center">
-            <span><button type="button" class="btn btn-dark bg-dark text-white" onclick="myFuntion()">Change
-                    Color</button></span>
-            <button type="button" class="btn btn-dark bg-dark m-10" id="copy">Copy Color Code</button>
-        </div>
 
-        <div id="toast">Successfully Generated</div>
+        <div class="container">
+            <h2 class="text-center text-white pt-5">Random Color Picker</h2>
+            <div class="box">
+                <span id="bgc">#FFBBGG</span>
+            </div>
+            <div class="text-center">
+                <span><button type="button" class="btn btn-dark bg-dark text-white" onclick="myFuntion()">Change
+                        Color</button></span>
+                <button type="button" class="btn btn-dark bg-dark m-10" id="copy">Copy Color Code</button>
+            </div>
+
+            <div id="toast">Successfully Generated</div>
+        </div>
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-    <Script>
-
-        const color = ['White', 'Silver', 'Gray', 'Black', 'Red', 'Maroon', 'Yellow', 'Olive', 'Lime', 'Green', 'Aqua', 'Teal', 'Blue', 'Navy', 'Fuchsia', 'Purple', 'MediumVioletRed', 'DeepPink', 'PaleVioletRed', 'HotPink', 'LightPink', 'Pink', 'DarkRed', 'Red', 'Firebrick', 'Crimson', 'IndianRed', 'LightCoral', 'Salmon', 'DarkSalmon', 'LightSalmon', 'OrangeRed', 'Tomato', 'DarkOrange', 'Coral', 'Orange', 'DarkKhaki', 'Gold', 'Khaki', 'PeachPuff', 'Yellow', 'PaleGoldenrod', 'Moccasin', 'PapayaWhip', 'LightGoldenrodYellow', 'LemonChiffon', 'LightYellow', 'Maroon', 'Brown', 'SaddleBrown', 'Sienna', 'Chocolate', 'DarkGoldenrod', 'Peru', 'RosyBrown', 'Goldenrod', 'SandyBrown', 'Tan', 'Burlywood', 'Wheat', 'NavajoWhite', 'Bisque', 'BlanchedAlmond', 'Cornsilk', 'DarkGreen', 'Green', 'DarkOliveGreen', 'ForestGreen', 'SeaGreen', 'Olive', 'OliveDrab', 'MediumSeaGreen', 'LimeGreen', 'Lime', 'SpringGreen', 'MediumSpringGreen', 'DarkSeaGreen', 'MediumAquamarine', 'YellowGreen', 'LawnGreen', 'Chartreuse', 'LightGreen', 'GreenYellow', 'PaleGreen', 'Teal', 'DarkCyan', 'LightSeaGreen', 'CadetBlue', 'DarkTurquoise', 'MediumTurquoise', 'Turquoise', 'Aqua', 'Cyan', 'Aquamarine', 'PaleTurquoise', 'LightCyan', 'Navy', 'DarkBlue', 'MediumBlue', 'Blue', 'MidnightBlue', 'RoyalBlue', 'SteelBlue', 'DodgerBlue', 'DeepSkyBlue', 'CornflowerBlue', 'SkyBlue', 'LightSkyBlue', 'LightSteelBlue', 'LightBlue', 'PowderBlue', 'Indigo', 'Purple', 'DarkMagenta', 'DarkViolet', 'DarkSlateBlue', 'BlueViolet', 'DarkOrchid', 'Fuchsia', 'Magenta', 'SlateBlue', 'MediumSlateBlue', 'MediumOrchid', 'MediumPurple', 'Orchid', 'Violet', 'Plum', 'Thistle', 'MistyRose', 'AntiqueWhite', 'Linen', 'Beige', 'WhiteSmoke', 'LavenderBlush', 'OldLace', 'AliceBlue', 'Seashell', 'GhostWhite', 'Honeydew', 'FloralWhite', 'Azure', 'MintCream', 'Snow', 'Ivory', 'White', 'Black', 'DarkSlateGray', 'DimGray', 'SlateGray', 'Gray', 'LightSlateGray', 'DarkGray', 'Silver', 'LightGray', 'Gainsboro'];
-        let btn = document.getElementById("btn");
-        var toast = document.querySelector('#toast');
-        var bg = document.querySelector('.max-screen');
-        function myFuntion() {
-            const randomNumber = randomColor();
-            bg.style.background = color[randomNumber];
-            document.querySelector('#bgc').innerHTML = " " + color[randomNumber];
+</section>
+<script>
+    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+    let btn = document.getElementById("btn");
+    var toast = document.querySelector('#toast');
+    var bg = document.querySelector('.max-screen');
+    function myFuntion() {
+        let hexColor = "#";
+        for (let i = 0; i < 6; i++) {
+            hexColor += hex[randomColor()]
         }
+        document.getElementById('bgc').innerHTML = hexColor;
+        bg.style.background = hexColor;
 
-        function randomColor() {
-            return Math.floor(Math.random() * 154);
-        }
-        function toastDiv(msg) {
-            toast.innerHTML = msg;
-            toast.className = "show";
+    }
+    function randomColor() {
+        return Math.floor(Math.random() * 16);
+    }
+    function toastDiv(msg) {
+        toast.innerHTML = msg;
+        toast.className = "show";
 
-            setTimeout(function () {
-                toast.className = toast.className.replace("show", "");
-            }, 2000);
-        }
-        // copy to clipboard
-        const getCopy = document.getElementById("copy");
-        getCopy.addEventListener('click', (event) => {
-            toastDiv("Copied To Clipboard Successfully");
-            navigator.clipboard.writeText(bgc.innerHTML);
-        });
-    </Script>
+        setTimeout(function () {
+            toast.className = toast.className.replace("show", "");
+        }, 2000);
+    }
+    // copy to clipboard
+    const getCopy = document.getElementById("copy");
+    getCopy.addEventListener('click', (event) => {
+        toastDiv("Copied To Clipboard Successfully");
+        navigator.clipboard.writeText(bgc.innerHTML);
+    });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 150,
+        duration: 500,
+    });
+</script>
+
 </body>
 
 </html>
