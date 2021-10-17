@@ -1,17 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <!-- Bootstrap CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewMenu</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap');
 
     * {
       margin: 0;
@@ -20,29 +23,131 @@
       font-family: 'Titillium Web', sans-serif;
     }
 
-    .nav-item {
-      margin-right: 20px;
-    }
-
-    .header {
+    html,
+    body {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 100%;
       width: 100%;
-      height: 200vh;
-      background-color: #2a2a72;
-      background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+      background-color: #4dccc6;
+      background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
     }
 
-    .header::before {
-      content: "";
-      position: absolute;
-      top: 0%;
-      bottom: 0%;
-      left: 0;
-      right: 0;
-      opacity: 0.5;
-      z-index: -1;
-      background-color: #2a2a72;
-      background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    .wrapper {
+      display: table;
+      height: 100%;
+      width: 100%;
     }
+
+    .container-fostrap {
+      display: table-cell;
+
+      padding: 1em;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    h1.heading {
+      color: #fff;
+      font-size: 1.15em;
+      font-weight: 900;
+      margin: 0 0 0.5em;
+      color: #505050;
+    }
+
+    @media (min-width: 450px) {
+      h1.heading {
+        font-size: 3.55em;
+      }
+    }
+
+    @media (min-width: 760px) {
+      h1.heading {
+        font-size: 3.05em;
+      }
+    }
+
+    @media (min-width: 900px) {
+      h1.heading {
+        font-size: 3.25em;
+        margin: 0 0 0.3em;
+      }
+    }
+
+    .card {
+      display: block;
+      width: auto;
+      margin: 20px;
+      line-height: 1.42857143;
+      background-color: #fff;
+      border-radius: 2px;
+      min-width: 15rem;
+      transition: 0.5s ease;
+      animation: start_animation 0.5s ease 1;
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .cfont {
+      font-family: 'Arimo', sans-serif;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .img-card {
+      width: 100%;
+      height: 220px;
+      min-width: 14rem;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      display: block;
+      overflow: hidden;
+    }
+
+    .img-card img {
+      margin-top: 15px;
+      width: fit-content;
+      height: 200px;
+      object-fit: cover;
+      transition: all .25s ease;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: left;
+
+    }
+
+    .card-content p {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+
+    .card-title {
+      font-family: 'Signika', sans-serif;
+      margin-top: 0px;
+      font-weight: 600;
+      font-size: 1.65em;
+    }
+
+    .card-title a {
+      color: #000;
+      text-decoration: none !important;
+    }
+
+    .card-read-more {
+      border-top: 1px solid #D4D4D4;
+    }
+
+    .card-read-more a {
+      text-decoration: none !important;
+      padding: 10px;
+      font-weight: 600;
+      text-transform: uppercase
+    }
+
 
     .navbar {
       background-color: black;
@@ -68,7 +173,6 @@
     }
 
     .nav-item a:hover {
-      /* font-weight: 600; */
       color: rgb(0, 195, 255);
       border-bottom: 1px solid rgb(0, 195, 255);
     }
@@ -78,190 +182,203 @@
       font-weight: 600;
       font-size: 20px;
     }
-    
 
-    .header-section {
-      width: 100%;
-      height: inherit;
-      text-align: center;
-      position: relative;
+    .nav-item {
+      margin-right: 20px;
     }
 
+    @keyframes start_animation {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
 
-    .center-div {
-      width: 100%;
-      height: auto;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
-
-
-    .section-cards {
-    padding-top: 50px;
-  }
-
-  .section-cards .card {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    margin: 30px 0;
-    border-radius: 5px;
-    color: rgba(0, 0, 0, 0.8);
-  }
-
-  .card {
-    transition: 0.5s ease;
-    animation: start_animation 0.5s ease 1;
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  }
-
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  }
-
-  .card-img-top {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  }
-
-  @keyframes start_animation {
-    from {
-      opacity: 0;
-      transform: scale(0);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
   </style>
-  <title>Menu Page</title>
 </head>
 
 <body>
-  <div class="header" id="headertop">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">Random Script</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" style="margin-right: 30px;"
-          id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Exit</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <section class="header-section">
-      <div class="center-div">
-        <div class="section-cards">
+  <section class="wrapper">
+    <div class="container-fostrap">
+      <div>
+        <h1 class="heading pt-5">
+          Random Script
+        </h1>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
           <div class="container">
-            <div class="row">
-              <div class="col-md-6 col-lg-4">
-                <div class="card ovf-hidden">
-                  <div class="view overlay">
-                    <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  </div>
-                  <div class="card-body">
-                    <h4 class="card-title text-info">QR Code Generator</h4>
-                    <p class="card-text">This tool helps you to generate QR code of your link</p>
-                    <a href="QRcode.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
+            <a class="navbar-brand" href="#">Random Script</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#About.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Exit</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                  <img src="/Image/qr-codeMenu.png" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    QR Code Generator
+                  </h4>
+                  <p class="cfont">
+                    Tutorial to make a carousel bootstrap by adding more wonderful effect fadein ...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="QRcode.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
                 </div>
               </div>
-    
-              <div class="col-md-6 col-lg-4">
-                <div class="card">
-                  <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  <div class="card-body">
-                    <h4 class="card-title text-info">Random Color Picker</h4>
-                    <p class="card-text">This tool is use for generate Random Color and Copy that random color</p>
-                    <a href="Color_1.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                  <img src="Image/rgb.png" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    Random Color Picker
+                  </h4>
+                  <p class="">
+                    Material Design is a visual programming language made by Google. Language programming...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="NewColor.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
                 </div>
               </div>
-    
-              <div class="col-md-6 col-lg-4">
-                <div class="card">
-                  <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  <div class="card-body">
-                    <h4 class="card-title text-info">Random Password Generator</h4>
-                    <p class="card-text">This tool helps you to genrate random password based on your choice.</p>
-                    <a href="Password.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                  <img src="Image/password.png" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    Random Password Generator
+                  </h4>
+                  <p class="">
+                    Material Design is a visual programming language made by Google. Language programming...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="MyNewPassword.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
                 </div>
               </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                  <img src="Image/dice.png" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    Dice Number
+                  </h4>
+                  <p class="">
+                    Material Design is a visual programming language made by Google. Language programming...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="dice.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                  <img src="Image/hanging-bulb.png" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    Random Led Glow
+                  </h4>
+                  <p class="">
+                    Material Design is a visual programming language made by Google. Language programming...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="Random_Led.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-out-up">
+              <div class="card">
+                <a class="img-card" href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                  <img
+                    src="https://4.bp.blogspot.com/-TDIJ17DfCco/Vtneyc-0t4I/AAAAAAAABmk/aa4AjmCvRck/s1600/cover.jpg" />
+                </a>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    Random Password Generator
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card">
-                  <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  <div class="card-body">
-                    <h4 class="card-title text-info">coin flip</h4>
-                    <p class="card-text">This Tool will flip coin randomely</p>
-                    <a href="coin_flip.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
+                  </h4>
+                  <p class="">
+                    tutorials button hover animation, although very much a hover button is very beauti...
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <a href="Password.html" class="btn btn-link btn-block">
+                    Start
+                  </a>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card">
-                  <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  <div class="card-body">
-                    <h4 class="card-title text-info">Roll a Dice</h4>
-                    <p class="card-text">This Tool will generate random 1 to 6 value </p>
-                    <a href="dice.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card">
-                  <img src="Image/Random_Color.jpg" alt="img" class="card-img-top">
-                  <div class="card-body">
-                    <h4 class="card-title text-info">Led Blinking</h4>
-                    <p class="card-text">Time to use led in diwali </p>
-                    <a href="Random_led.html"><button type="button" class="btn btn-outline-primary">Try it..!!</button></a>
-                  </div>
-                </div>
-              </div>
-    
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+    </div>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 150,
+      duration: 500,
+    });
+  </script>
+
 </body>
 
 </html>
-
