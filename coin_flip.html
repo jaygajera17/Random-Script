@@ -6,28 +6,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How To Generate QR Code Using Javascript</title>   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
 
+  <script>
+  src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+</head>
+<section>
 <div id="box">
 <div id="coin">
     <div class="side-a"></div>
     <div class="side-b"></div>
   </div>
   <h1>Click on coin to flip</h1>
-  <div class="bottomright"> Made with  &#10084;&#65039; by Random Script</div>
- </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  <div class="wrap">
+    <div class="btn-text-left">
+    <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-new">
+      
+      More info
+</center>
+    </button>
+    </div>
+  </div>
+   
+  <div class="modal fade bs-example-modal-new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog">
+      
+      <!-- Modal Content: begins -->
+      <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <center><h4 class="modal-title" id="gridSystemModalLabel">FAQ</h4></center>
+        </div>
+      
+        <!-- Modal Body -->  
+        <div class="modal-body">
+          <div class="body-message">
+            
+            <p>	&#x27A1;No coins in your pocket? With our online coin flipper tool you can instantly flip coin.
+              <br><BR>
+              &#x27A1;Touch on the coin to flip
+                      <br><br>
+                      &#x27A1;A Coin Flip in an online simulator for doing a coin toss, when you don't have any real coins. Both people should choose heads or tails before flipping the virtual coins. The tool will then flip a coin using a random method and decide the winner of the coin flip.
+                  <br><BR>    
+                  &#x27A1;A coin flip is already used for ages to make a random decision. Flipping a coin is widely used in sports and games or just a fun way to decide who is going to start or has to do a task. The only thing which make our tool different than a real coin flip, is that our coin can't flip on the edge.
+                    <br>  <br>
+                      
+                    &#x27A1;The probability of heads or tails is also 50:50 as if you toss a coin hardly or softly in the real world.
+                     <br> <br>
+                     &#x27A1;The coin flip generator is truly random and can't be manipulated.
+                     
+                    </p>
+          </div>
+        </div>
+      
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      
+      </div>
+      <!-- Modal Content: ends -->
+      
+    </div>
+    
+  </div>
+  
+  
+  </div>
+  
+  
+   
+    <!-- Trigger the modal with a button -->
+   
+  
 
 
-
+  </section>
+  
 
 
   <script>
-    const value1=[];
-const value2=[];
+    
       jQuery(document).ready(function($){
 
 $('#coin').on('click', function(){
@@ -64,13 +133,23 @@ function myFunction() {
 
 
   <style>
+  
+
+  .btn-text-left{
+text-align: left;	
+}
+
+p {
+  text-align: left;
+  font-size: 15px;
+  background-color: rgb(227, 238, 197);
+}
 
 body {
   padding-top: 50px;
- 
-  -webkit-perspective: 800px;
-  width: 100%;
-height: 100vh;
+-webkit-perspective: 800px;
+width: 100%;
+height: 100%;
 background:linear-gradient(to right top ,#b597f6,#439cfb);
 display: flex;
 justify-content: center;
