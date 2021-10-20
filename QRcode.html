@@ -1,162 +1,193 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Image/logo.png">
-    <title>QR Code Generator </title>   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   
 </head>
 <style type="text/css" media="screen">
-* {  
-      margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Quicksand;
-}
-body {
-    width: 100%;
-    height: 100vh;
-    background:linear-gradient(to right top,#b597f6,#439cfb);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: 1000px 500px;
-}
-.main {
-    width: 60%;
-    height: 90%;
-    padding: 50px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #fff;
-    box-shadow: 0 10px 25px -10px rgba(0,0,0,0.5);
-    border-radius: 5px;
-}
-.main p {
-    font-size:36px;
-    margin:10px;
-}
-.main .input {
-    width: 90%;
-    padding: 10px 25px;
-    border: 3px solid #9e9e9e;
-    outline: none;
-    margin: 15px 0 40px;
-}
-.main .input:focus {
-    border: 3px solid #439cfb;
-}
-.btn ,.input {
-    font-size:1.1rem;
-    border-radius: 5px;
-}
-.main .btn {
-    width: 90%;
-    padding: 12px 0;
-    outline: none;
-    border:none;
-    border-radius: 5px;
-    background: #439cfb;
-    color: #fff;
-    transition: 0.3s;
-    margin: 0 0 25px 0;
-    cursor: pointer;
-}
-.main .minibtn{
-    width: 90%;
-    padding: 12px 0;
-    outline: none;
-    border:none;
-    border-radius: 5px;
-    background: #2b88be;
-    color: #fff;
-    transition: 0.3s;
-    margin: 0 0 25px 0;
-    cursor: pointer;
-    visibility: hidden;
-}
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Quicksand;
+        font-family: 'Heebo', sans-serif;
+    }
 
-.main .code {
-    margin: 25px 0;
-}
-.main .btn:hover {
-    box-shadow: 0 10px 25px -10px #439cfb;
-}
-.main #note {
-    font-size: 1.2rem;
-    font-family: 'Courier New', Courier, monospace;
-}
-#toast {
-    position: absolute;
-    bottom: 0;
-    border-radius: 5px;
-    padding: 15px 50px;
-    background: #07f49e;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 10px 25px -10px #07f49e;
-    transition: 0.3s;
-}
-#toast.show {
-    visibility: visible;
-    opacity: 1;
-    bottom: 50px;
-}  
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: #738bdc;
+        background-image: linear-gradient(315deg, #738bdc 0%, #48c3eb 74%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main {
+        width: 60%;
+        height: 90%;
+        padding: 50px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+
+    .main p {
+        font-size: 36px;
+        margin: 10px;
+    }
+
+    .main .input {
+        width: 90%;
+        padding: 10px 25px;
+        border: 3px solid #9e9e9e;
+        outline: none;
+        margin: 15px 0 40px;
+    }
+
+    .main .input:focus {
+        border: 3px solid #439cfb;
+    }
+
+    .btn,
+    .input {
+        font-size: 1.1rem;
+        border-radius: 5px;
+    }
+
+    .main .btn {
+        width: 30%;
+        padding: 12px 0px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background: #439cfb;
+        color: #fff;
+        transition: 0.3s;
+        margin: 0 0 25px 0;
+        cursor: pointer;
+        min-width: 100px;
+    }
+
+    .main .minibtn {
+        width: 30%;
+        padding: 12px 0;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background: #439cfb;
+        color: #fff;
+        transition: 0.3s;
+        margin: 0 0 25px 0;
+        cursor: pointer;
+        visibility: hidden;
+        font-weight: 500;
+    }
+
+    .main .code {
+        margin: 25px 0;
+    }
+
+    .main .btn:hover {
+        box-shadow: 0 10px 25px -10px #439cfb;
+    }
+
+    .main #note {
+        font-size: 1.2rem;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    #toast {
+        position: absolute;
+        bottom: 0;
+        border-radius: 5px;
+        padding: 15px 50px;
+        background: #07f49e;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0 10px 25px -10px #07f49e;
+        transition: 0.3s;
+    }
+
+    #toast.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: 50px;
+    }
+
+
 </style>
+
 <body>
-    <div class="main">
+    <div class="main" data-aos="zoom-out-down">
         <p> Generate QR Code </p>
         <input type="text" class="input" value="" id="textvalue" placeholder="Paste Your Link Here">
-        <button class="btn">Generate</button>  
-        <img src="Image/qr-code.png" alt="Your QR Code will be show here..." class="code" height="300" width="75">
+        <button class="btn">Generate</button>
+        <img src="Image/qr-code.png" alt="Your QR Code will be show here..." class="code" height="300" width="100">
         <button class="minibtn" id="copy">Copy QR Code Link To Clipboard</button>
         <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <p id="note">Made with &#10084;&#65039; by Random Script</p>
     </div>
-    <div id="toast">Successfully Generated</div> 
- 
-  <!----  <a href="https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}" download="smile.jpg">Download image</a> -->
+    <div id="toast">Successfully Generated</div>
 
-       
+    <!----  <a href="https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}" download="smile.jpg">Download image</a> -->
+
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration: 500,
+        });
+    </script>
 </body>
+
 </html>
 
 <script>
     var btn = document.querySelector('.btn');
     var code = document.querySelector('.code');
     var toast = document.querySelector('#toast');
-    btn.addEventListener("click",generate);
-    function generate() {    
+    btn.addEventListener("click", generate);
+    function generate() {
         var data = $('#textvalue').val();
         window.url = `https://api.qrserver.com/v1/create-qr-code/?size=165x165&data=${data}`;
         code.src = window.url;
         toastDiv("Your QR Code Generated Successfully..!!!!!");
-        document.querySelector('.minibtn').style.visibility="visible";
+        document.querySelector('.minibtn').style.visibility = "visible";
     }
     function toastDiv(msg) {
-        toast.innerHTML=msg;
+        toast.innerHTML = msg;
         toast.className = "show";
 
-        setTimeout( function() {
-            toast.className = toast.className.replace("show" , "");
-        },2000);
+        setTimeout(function () {
+            toast.className = toast.className.replace("show", "");
+        }, 2000);
     }
     // copy to clipboard
-    const getCopy=document.getElementById("copy");
-    getCopy.addEventListener('click',(event)=>{
+    const getCopy = document.getElementById("copy");
+    getCopy.addEventListener('click', (event) => {
         toastDiv("Copied To Clipboard Successfully");
         navigator.clipboard.writeText(window.url);
     });
-   
-    
-    </script>
+
+
+</script>
 
 
 <script>
-   
+
 </script>
