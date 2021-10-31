@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random video generator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" href="Image/logo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+
+        #song1 {
+            width: 100%;
+            background-color: rgb(0, 195, 255);
+        }
+
+        .wrapper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container-fostrap {
+            display: table-cell;
+            padding: 1em;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .fostrap-logo {
+            width: 100px;
+            margin-bottom: 15px
+        }
+
+        .btn2 {
+            margin-left: 85px
+        }
+
+        #button:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .box #note {
+            font-size: 1.2rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+        .navbar {
+            background-color: black;
+            opacity: 0.9;
+            z-index: 999;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .nav-item a {
+            color: white;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.5s ease;
+        }
+
+        .nav-item a:hover {
+            color: rgb(0, 195, 255);
+            border-bottom: 1px solid rgb(0, 195, 255);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+
+        .max-screen {
+            min-width: 100vw;
+            min-height: 102vh;
+            background-color: #738bdc;
+            background-image: linear-gradient(315deg, #738bdc 0%, #48c3eb 74%);
+            transition: 0.7s ease;
+        }
+
+        .box {
+            font-family: 'Nunito Sans', sans-serif;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            min-height: 15vh;
+            width: 30vw;
+            margin: 58px 29vw;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: seashell;
+            overflow-x: hidden;
+            margin-bottom: 30px;
+        }
+
+        #bgc {
+            font-size: 35px;
+        }
+
+        @media screen and (max-width: 643px) {
+            .box {
+                min-height: 15vh;
+                width: 63vw;
+                padding: 10px 20px;
+                margin: 25px 15vw;
+                font-size: 20px;
+                min-width: 156px;
+                margin-top: 50px;
+            }
+
+            .song {
+
+                min-height: 15vh;
+                width: 90vw;
+                padding: 2px 5px;
+                font-size: 20px;
+                min-width: 156px;
+
+
+            }
+
+            #bgc {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+
+        .btn {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        .btn:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #toast {
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+            padding: 15px 50px;
+            background: black;
+            opacity: 0;
+            color: white;
+            font-weight: 500;
+            visibility: hidden;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            transition: 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1000;
+            bottom: 50px;
+        }
+
+        .song {
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            min-height: 15vh;
+            margin: 25px 1vw;
+            padding: 2px;
+            border-radius: 10px;
+            overflow-x: hidden;
+            margin-bottom: 10px;
+            font-family: 'Nunito Sans', sans-serif;
+
+            margin-top: 20px;
+
+        }
+
+        .song2 {
+            height: 300px;
+            width: 33%;
+            float: center;
+            border: solid 1px;
+            margin-left: 5%;
+        }
+
+        .main {
+            display: inline;
+            height: auto;
+            margin: 0;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 14px;
+
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/Wallpaper.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+    </style>
+</head>
+
+<section class="wrapper">
+
+    <div class="max-screen">
+        <div class="container-fostrap">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark" data-aos="zoom-out-left">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Random Script</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Exit</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="box" data-aos="zoom-in-down">
+
+                <div class="row">
+
+                    <div class="col-md-12 sm-12">
+                        <h2 class="text-center">What You Want</h2>
+                    </div>
+
+                    <div class="col-md-5 ms-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="music" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                bollywood songs
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 ms-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="Movies">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Movies
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 ms-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="News">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                News
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 ms-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="Entertaiment">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                hollywood songs
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="main">
+                <div class="song" data-aos="zoom-in-down">
+                    <div class="iframe-container">
+                        <iframe id="song1" src="" frameborder="0" gesture="media" allow="encrypted-media"
+                            allowfullscreen>
+
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="text-center"><button type="button" class="btn gbtn btn-dark bg-dark text-white"
+                    onclick="GetSong()">Search</button></div>
+
+
+            <div id="toast">Successfully Generated</div>
+        </div>
+    </div>
+
+
+</section>
+<script>
+    var bg = document.querySelector('.max-screen');
+
+    function GetSong() {
+        if (document.getElementById("music").checked == true) {
+            bg.style.background = "#FC5050";
+            var song =
+                [
+
+
+                    { song1: 'https://www.youtube.com/embed/nFjVlf2r9_Q' },
+                    { song1: 'https://www.youtu.com/embed/SlHnlxDt2TQ' },
+                    { song1: 'https://www.youtube.com/embed/w4ClQO0FFQg' },
+                    { song1: 'https://www.youtube.com/embed/5LBB6OV3Ano' },
+                    { song1: 'https://www.youtube.com/embed/ByIZIKFmHOA' },
+                    { song1: 'https://www.youtube.com/embed/lX3vT_Gm_HE' },
+                    { song1: 'https://www.youtube.com/embed/1poXN3jF3Bw' },
+                    { song1: 'https://www.youtube.com/embed/USccSZnS8MQ' },
+                    { song1: 'https://www.youtube.com/embed/PO6nynliE0Q' },
+                    { song1: 'https://www.youtube.com/embed/GLGuLXKT9Ng' },
+                    { song1: 'https://www.youtube.com/embed/V7LwfY5U5WI' },
+                    { song1: 'https://www.youtube.com/embed/Ps4aVpIESkc' },
+                    { song1: 'https://www.youtube.com/embed/MRtRcTfszjY' },
+                    { song1: 'https://www.youtube.com/embed/PVxc5mIHVuQ' },
+                    { song1: 'https://www.youtube.com/embed/92J9p0VplTo' },
+                    { song1: 'https://www.youtube.com/embed/Ydp5fLbxUbk' },
+                    { song1: 'https://www.youtube.com/embed/hejXc_FSYb8' },
+                    { song1: 'https://www.youtube.com/embed/xRb8hxwN5zc' },
+                    { song1: 'https://www.youtube.com/embed/YPohR_9v6HA' },
+                    { song1: 'https://www.youtube.com/embed/AAD4qz-PAQE' },
+                    { song1: 'https://www.youtube.com/embed/j6muwUGdvXw' },
+                    { song1: 'https://www.youtube.com/embed/wF_B_aagLfI' },
+                    { song1: 'https://www.youtube.com/embed/oCBDl58lBoU' },
+                    { song1: 'https://www.youtube.com/embed/BBAyRBTfsOU' },
+                    { song1: 'https://www.youtube.com/embed/vu5-aKf_QqA' },
+                    { song1: 'https://www.youtube.com/embed/JFcgOboQZ08' },
+                    { song1: 'https://www.youtube.com/embed/NNqLB7znMLU' },
+                    { song1: 'https://www.youtube.com/embed/yIIGQB6EMAM' },
+                    { song1: 'https://www.youtube.com/embed/_cPHiwPqbqo' },
+                    { song1: 'https://www.youtube.com/embed/TCx1yMegJ4A' },
+                    { song1: 'https://www.youtube.com/embed/6wNFJIbTxNk' },
+                    { song1: 'https://www.youtube.com/embed/atVof3pjT-I' },
+                    { song1: 'https://www.youtube.com/embed/K-Ts-NFR62o' },
+                    { song1: 'https://www.youtube.com/embed/qVHaXD7zHDQ' },
+                    { song1: 'https://www.youtube.com/embed/UBBHpoW3AKA' },
+                    { song1: 'https://www.youtube.com/embed/q_0uF80IZXM' },
+                    { song1: 'https://www.youtube.com/embed/zYhBJoBUSYA' },
+                    { song1: 'https://www.youtube.com/embed/v7K4vGYL9zI' },
+
+                    { song1: 'https://www.youtube.com/embed/ODp3B_pQD48' },
+                    { song1: 'https://www.youtube.com/embed/w9Qo6p4XsXE' },
+                    { song1: 'https://www.youtube.com/embed/ReXw6TOnUOc' },
+                    { song1: 'https://www.youtube.com/embed/uuCFRaFWjwY' },
+                    { song1: 'https://www.youtube.com/embed/Wkgk5rSXHX4' },
+                    { song1: 'https://www.youtube.com/embed/FJ55SHCzt88' },
+                    { song1: 'https://www.youtube.com/embed/FJ55SHCzt88' },
+                    { song1: 'https://www.youtube.com/embed/txvtuQr6miY' },
+                    { song1: 'https://www.youtube.com/embed/txvtuQr6miY' },
+                    { song1: 'https://www.youtube.com/embed/Ph9WRhlPacY' },
+                    { song1: 'https://www.youtube.com/embed/fWQpb6T89d4' },
+                    { song1: 'https://www.youtube.com/embed/A5pSnIwbpaM' },
+                    { song1: 'https://www.youtube.com/embed/u-FaTNxrWhw' },
+                    { song1: 'https://www.youtube.com/embed/nfNc0XJdZWk' },
+                    { song1: 'https://www.youtube.com/embed/AI5J638oCLA' },
+
+                    { song1: 'https://www.youtube.com/embed/6cKErCWrb44' },
+                    { song1: 'https://www.youtube.com/embed/iTAj46KJZtM' },
+
+
+                ];
+        }
+
+
+        if (document.getElementById("News").checked == true) {
+
+            bg.style.background = "#28E2DE";
+            var song = [
+
+
+                {song1:'https://www.youtube.com/embed/Xmm3Kr5P1Uw'},
+                {song1:'https://www.youtube.com/embed/rk5LQGDw-dU'},
+                {song1:'https://www.youtube.com/embed/lyeyoqwXm5obe'},
+                { song1: 'https://www.youtube.com/embed/quGbGOPuksI' },
+                { song1: 'https://www.youtube.com/embed/Cy_6-_XUW-c' },
+                { song1: 'https://www.youtube.com/embed/ghmKgJV8PVg' },
+
+
+
+
+            ];
+        }
+
+
+        if (document.getElementById("Movies").checked == true) {
+            bg.style.background = "#3670AC";
+            var song = [
+
+                { song1: 'https://www.youtube.com/embed/vULfnvi23GE' },
+                { song1: 'https://www.youtube.com/embed/Jkxbf5XgH6g' },
+                { song1: 'https://www.youtube.com/embed/D4HvmICrC8w' },
+                { song1: 'https://www.youtube.com/embed/tYrlXcloVLc' },
+                { song1: 'https://www.youtube.com/embed/TcDmarWK68c' },
+                { song1: 'https://www.youtube.com/embed/smLNCbYNQP4' },
+                { song1: 'https://www.youtube.com/embed/3Z14uE7U0HY' },
+                { song1: 'https://www.youtube.com/embed/cx4Xwae513g' },
+                { song1: 'https://www.youtube.com/embed/nICDrYQEiVg' },
+                { song1: 'https://www.youtube.com/embed/7oBJRc4_tQw' },
+                { song1: 'https://www.youtube.com/embed/_QAIimfl8oE' },
+                { song1: 'https://www.youtube.com/embed/WDiJLlM99NU' },
+                { song1: 'https://www.youtube.com/embed/P82Vp6Ww4mc' },
+                { song1: 'https://www.youtube.com/embed/0TjvV03TFsQ' },
+                { song1: 'https://www.youtube.com/embed/FdKqzOmQQjY' },
+                { song1: 'https://www.youtube.com/embed/_gHzG5swDNA' },
+                { song1: 'https://www.youtube.com/embed/aryurq3Z4BM' },
+                { song1: 'https://www.youtube.com/embed/2ADWGnGvqqU' },
+                { song1: 'https://www.youtube.com/embed/uIqbGsYhPFk' },
+                { song1: 'https://www.youtube.com/embed/HVyXEbOWrp4' },
+                { song1: 'https://www.youtube.com/embed/i5TgKkCsV3Y' },
+                { song1: 'https://www.youtube.com/embed/6qpudAhYhpc' },
+                { song1: 'https://www.youtube.com/embed/rf3-L5Pzh9s' },
+                { song1: 'https://www.youtube.com/embed/lh7hsGt3QsE' },
+                { song1: 'https://www.youtube.com/embed/7jz4Pl3MKWE' },
+
+
+
+            ];
+        }
+        var rando = song[Math.floor(Math.random() * song.length)];
+
+        document.getElementById("song1").src = rando.song1;
+
+    }
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 150,
+        duration: 500,
+    });
+</script>
+
+
+
+
+
+<script>
+
+    // var calcHeight = function () {
+
+    //     $('#song1').height($(window).height());
+
+    // }
+
+    // $(document).ready(function () {
+
+    //     calcHeight();
+
+    // });
+
+    // $(window).resize(function () {
+
+    //     calcHeight();
+
+    // }).load(function () {
+
+    //     calcHeight();
+
+    // });
+
+</script>
+
+</head>
+
+<body>
+</body>
+
+</html>
