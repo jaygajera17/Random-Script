@@ -219,7 +219,11 @@
             border: solid 1px;
             margin-left: 5%;
         }
-
+        p {
+  text-align: left;
+  font-size: 15px;
+  background-color: rgb(227, 238, 197);
+}
         .main {
             display: inline;
             height: auto;
@@ -244,7 +248,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('image/Wallpaper.jpg');
+            background: url('image/wallpaper.jpg');
             background-repeat: no-repeat;
             background-size: cover;
 
@@ -345,8 +349,42 @@
 
 
             <div class="text-center"><button type="button" class="btn gbtn btn-dark bg-dark text-white"
-                    onclick="GetSong()">Search</button></div>
+                    onclick="GetSong()">Search</button>
+                   <center><button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">About</button></center> 
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">why you should use</h5>
+                          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                          <p>	&#x27A1;This tool provides links to random videos hosted at YouTube, with the emphasis on random.
+                    <br><BR><br>
+                    &#x27A1; you tube have so much  video <br><br>
+                    if you search in youtube  like best song the result may not best,<br> <br>
+                    if you search free movie , search result have include paid movie and fake movie also,<br><br>
+                    and during watch video lots of ad have shown .<br>
+                     youtube app's  algorithm's  work  based on ads and promotions.
 
+                            <br><br><br>
+                            &#x27A1;so we  provide this tool for all above solution <br>
+                            benefit:-
+                        <br>   
+                      
+                        1. watch video without ads.<br>
+                        2. search result is based on your choice<br>
+                        3. search result will be not fake and negative rated<br>
+                        4. ex: in the song result always best rated song over 300 million + viewer<br>
+                          <br>  <br>
+                            
+                          &#x27A1; in case of any problem or issue feel free to mail us.
+                           <br> <br>
+                           &#x27A1;sitting back and enjoy 🤩.
+                            <br><BR>
+                            
+                          </p>
+                        </div>
+                      </div>
+                    </div>
 
             <div id="toast">Successfully Generated</div>
         </div>
@@ -568,3 +606,4 @@
 </body>
 
 </html>
+
