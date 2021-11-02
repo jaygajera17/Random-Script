@@ -17,13 +17,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Titillium Web', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
         }
+
+        /* ---------------------NAVBAR---------------------------- */
 
         #button:hover {
             color: white;
@@ -54,7 +57,8 @@
 
         .nav-item a:hover {
             color: rgb(0, 195, 255);
-            border-bottom: 1px solid rgb(0, 195, 255);
+            font-weight: bold;
+         
         }
 
         .navbar-brand {
@@ -67,11 +71,15 @@
             margin-right: 20px;
         }
 
+
+        /* ----------------------------------------Topic Div-------------------------------- */
+
         .center {
             width: 100vw;
             height: 100vh;
-            background-color: #f9c1b1;
-            background-image: linear-gradient(315deg, #f9c1b1 0%, #fb8085 74%);
+            background-color: #045de9;
+            background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+            
         }
 
         .box {
@@ -92,6 +100,13 @@
             scrollbar-width: none;
             /* Firefox */
         }
+
+        @media screen and (max-width: 543px) {
+            .box {
+                width: 75%;
+            }
+        }
+
 
         .box2 {
 
@@ -189,9 +204,10 @@
             margin: 2px 5px;
             display: inline-block;
             vertical-align: top;
-            background: #fff;
-            padding: 3px;
-            /* margin: 2px; */
+            background: black;
+
+            color: white;
+            padding: 5px;
             width: fit-content;
             border-radius: 3px;
             overflow-y: scroll;
@@ -199,20 +215,23 @@
             /* IE and Edge */
             scrollbar-width: none;
             /* Firefox */
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
         }
 
-        .group h2 {
+        .group h3 {
             padding: 0;
             margin: 0;
+            
         }
 
 
         /* Hide scrollbar for IE, Edge and Firefox */
-        .box::-webkit-scrollbar,.box2::-webkit-scrollbar,.group::-webkit-scrollbar,.groups::-webkit-scrollbar {
+        .box::-webkit-scrollbar,
+        .box2::-webkit-scrollbar,
+        .group::-webkit-scrollbar,
+        .groups::-webkit-scrollbar {
             display: none;
         }
-        
     </style>
 </head>
 
@@ -228,16 +247,16 @@
             <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="Menu.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="About.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="Contact.html">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Exit</a>
+                        <a class="nav-link" href="Menu.html">Exit</a>
                     </li>
                 </ul>
             </div>
@@ -252,15 +271,15 @@
                 <div class="col-lg-12 md-6 text-center">
                     <h1>Random Group Maker</h1>
                     <div class="wrap alt">
-                        <p class="toggle-wrap">Number of people per group <a class="choice"
+                        <p class="toggle-wrap">Number of People per group <a class="choice"
                                 href="#choice"><strong>TOGGLE</strong><span class="switch"></span></a> Number of Groups
                         </p>
-                        <p class="pergroup-wrap">Number of choice per group: <input class="pergroup" type="integer"
+                        <p class="pergroup-wrap">Number of students per group: <input class="pergroup" type="integer"
                                 value="" /></p>
                         <p class="numgroups-wrap">Number of groups: <input class="numgroups" type="integer" value="" />
                         </p>
                         <textarea name="students" id="students" class="form-control"
-                            placeholder="choice 1&#10;choice 2&#10;choice 3"></textarea>
+                            placeholder="choice 1&#10;choice 2...etc many choices you want to add"></textarea>
                         </p>
                         <button type="button" class="btn gbtn btn-dark bg-dark text-white">Make Groups</button>
 
@@ -323,7 +342,7 @@
         $('.groups').empty();
 
         for (i = 0; i < numgroups; i++) {
-            $('.groups').append('<div class="group" data-aos="zoom-in-down" data-aos-delay="300" id="group' + (i + 1) + '"><h2>Group ' + (i + 1) + '</h2></div>');
+            $('.groups').append('<div class="group" data-aos="zoom-in-down" data-aos-delay="300" id="group' + (i + 1) + '"><h3>Group ' + (i + 1) + '</h3></div>');
         }
 
         $('.group').each(function () {
