@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
+        rel="stylesheet">
+    <title>Random Group Maker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        #button:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .navbar {
+            background-color: black;
+            z-index: 999;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .nav-item a {
+            color: white;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.5s ease;
+        }
+
+        .nav-item a:hover {
+            color: rgb(0, 195, 255);
+            border-bottom: 1px solid rgb(0, 195, 255);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .center {
+            width: 100vw;
+            height: 100vh;
+            background-color: #f9c1b1;
+            background-image: linear-gradient(315deg, #f9c1b1 0%, #fb8085 74%);
+        }
+
+        .box {
+            width: 60%;
+            height: 85%;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #fff;
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            margin-top: 5vh;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .box2 {
+
+            margin-top: 32px;
+        }
+
+        #toast {
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+            padding: 15px 50px;
+            background: black;
+            opacity: 0;
+            color: white;
+            font-weight: 500;
+            visibility: hidden;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            transition: 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1000;
+            bottom: 50px;
+        }
+
+        .gbtn {
+            margin: 10px 25px;
+            font-size: 1.2rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .gbtn:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .toggle-wrap a {
+            display: inline-block;
+            background: #444;
+            border-radius: 1000px;
+            position: relative;
+            width: 3em;
+            height: 1.25em;
+            vertical-align: middle;
+            margin: 0 0.5em;
+        }
+
+        .toggle-wrap a strong {
+            display: none;
+        }
+
+        .switch {
+            position: absolute;
+            top: 0.1em;
+            left: 0.15em;
+            height: 1em;
+            width: 1.5em;
+            background: #fff;
+            border-radius: 1000px;
+            transition: 0.3s;
+        }
+
+        .alt .switch {
+            left: calc(100% - 1.6em);
+        }
+
+        .numgroups-wrap {
+            display: none;
+        }
+
+        .alt .numgroups-wrap {
+            display: inherit;
+        }
+
+        .alt .pergroup-wrap {
+            display: none;
+        }
+
+        .groups {
+            visibility: hidden;
+            padding: 5px;
+            /* background: #ddd; */
+            margin: 2px 0;
+            overflow-y: scroll;
+            overflow-x: scroll;
+
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .group {
+            margin: 2px 5px;
+            display: inline-block;
+            vertical-align: top;
+            background: #fff;
+            padding: 3px;
+            /* margin: 2px; */
+            width: fit-content;
+            border-radius: 3px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+
+        .group h2 {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .box::-webkit-scrollbar,.box2::-webkit-scrollbar,.group::-webkit-scrollbar,.groups::-webkit-scrollbar {
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" data-aos="fade-in">
+        <div class="container">
+            <a class="navbar-brand" href="#">Random Script</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Exit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="center d-flex align-items-center justify-content-center">
+    <div class="box bg-light" data-aos="zoom-in-down">
+        <div class="box2">
+            <div class="row">
+                <div class="col-lg-12 md-6 text-center">
+                    <h1>Random Group Maker</h1>
+                    <div class="wrap alt">
+                        <p class="toggle-wrap">Number of People per group <a class="choice"
+                                href="#choice"><strong>TOGGLE</strong><span class="switch"></span></a> Number of Groups
+                        </p>
+                        <p class="pergroup-wrap">Number of students per group: <input class="pergroup" type="integer"
+                                value="" /></p>
+                        <p class="numgroups-wrap">Number of groups: <input class="numgroups" type="integer" value="" />
+                        </p>
+                        <textarea name="students" id="students" class="form-control"
+                            placeholder="choice 1&#10;choice 2&#10;choice 3"></textarea>
+                        </p>
+                        <button type="button" class="btn gbtn btn-dark bg-dark text-white">Make Groups</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 md-6 text-center mt-2">
+                <h2>Your choice is</h2>
+                <div class="groups" id="grp" data-aos="zoom-in-down"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    <div id="toast" data-aos="fade-in">Successfully Generated</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration: 500,
+        });
+    </script>
+
+</section>
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 150,
+        duration: 500,
+    });
+</script>
+
+<script>
+    $('button').on('click', function (e) {
+
+        $(".groups").css("visibility", "visible");
+        e.preventDefault();
+        var namespergroup = parseInt($('.pergroup').val()),
+            allnames = $('textarea').val().split('\n'),
+            allnameslen = allnames.length;
+
+        var numgroups = Math.ceil(allnameslen / namespergroup);
+
+        if ($('.numgroups').val()) {
+            numgroups = parseInt($('.numgroups').val());
+            namespergroup = allnameslen / numgroups;
+        }
+
+        $('.groups').empty();
+
+        for (i = 0; i < numgroups; i++) {
+            $('.groups').append('<div class="group" data-aos="zoom-in-down" data-aos-delay="300" id="group' + (i + 1) + '"><h2>Group ' + (i + 1) + '</h2></div>');
+        }
+
+        $('.group').each(function () {
+            for (j = 0; j < namespergroup; j++) {
+                var randname = Math.floor(Math.random() * allnames.length);
+                if (allnames[randname]) {
+                    $(this).append('<p>' + allnames[randname] + '</p>');
+                }
+                allnames.splice(randname, 1);
+                console.log(allnames);
+            }
+        });
+    });
+
+    $('.toggle-wrap a').on('click', function (e) {
+        e.preventDefault();
+        $('.wrap').toggleClass('alt');
+        $('.pergroup-wrap, .numgroups-wrap').find('input').val('');
+    });
+</script>
+
+</html>
