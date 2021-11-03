@@ -30,7 +30,7 @@
             box-sizing: border-box;
             height: 100%;
             width: 100%;
-            
+
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
         }
@@ -56,9 +56,9 @@
             font-weight: 900;
             margin: 0 0 0.5em;
             color: #505050;
-            text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
         }
 
         @media (min-width: 450px) {
@@ -79,7 +79,7 @@
                 margin: 0 0 0.3em;
             }
 
-           
+
         }
 
         .card {
@@ -91,7 +91,7 @@
             border-radius: 2px;
             min-width: 15rem;
             min-height: 400px;
-            overflow:hidden;
+            overflow: hidden;
             transition: 0.5s ease;
             animation: start_animation 0.5s ease 1;
             box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -197,26 +197,175 @@
             margin-right: 20px;
         }
 
-          /* -------------counter------------------ */
-          .counter{
-           
+        /* -------------counter------------------ */
+        .counter {
+
             width: max-content;
             margin: 0;
             padding: 0;
             border-radius: 16px;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
-      
+
         @media (min-width: 1008px) {
-           .counter{
-             margin-left: 33vw;
-           }
-           
+            .counter {
+                margin-left: 33vw;
+            }
+
+        }
+
+
+        /* ----------------------PreLoader-------------------------- */
+     
+        .spinner-wrapper {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: #000000;
+        }
+
+        h1.loader {
+            margin: 0;
+            padding: 0;
+            font-family: ‘Arial Narrow’, sans-serif;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: #a3e1f0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        h1.loader span {
+            position: relative;
+            top: 0.63em;
+            display: inline-block;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: rotateX(-90deg);
+        }
+
+        .let1 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.2s;
+        }
+
+        .let2 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.3s;
+        }
+
+        .let3 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.4s;
+        }
+
+        .let4 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.5s;
+
+        }
+
+        .let5 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.6s;
+        }
+
+        .let6 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.7s;
+        }
+
+        .let7 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.8s;
+        }
+        .let8 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .let9 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.1s;
+        }
+        .let10 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.2s;
+        }
+        .let11 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.3s;
+        }
+        .let12 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.4s;
+        }
+
+        .letspace{
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.9s;
+        }
+
+        @keyframes drop {
+            10% {
+                opacity: 0.5;
+            }
+
+            20% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            80% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0;
+                top: 6.94em
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- CSS Spinner -->
+    <div class="spinner-wrapper">
+        <h1 class="loader">
+            <span class="let1">R</span>
+            <span class="let2">a</span>
+            <span class="let3">n</span>
+            <span class="let4">d</span>
+            <span class="let5">o</span>
+            <span class="let6">m</span>
+            <span class="letspace"> </span>
+            <span class="let7">S</span>
+            <span class="let8">c</span>
+            <span class="let9">r</span>
+            <span class="let10">i</span>
+            <span class="let11">p</span>
+            <span class="let12">t</span>
+        </h1>
+    </div>
+
+
+
+
+
     <section class="wrapper">
         <div class="container-fostrap">
             <div>
@@ -285,8 +434,9 @@
                                         Random Color Picker
                                     </h4>
                                     <p class="cfont">
-                                       To randomly generate a color simply load this page and get reproduce over 16 million colors
-                                        
+                                        To randomly generate a color simply load this page and get reproduce over 16
+                                        million colors
+
                                     </p>
                                 </div>
                                 <div class="card-read-more">
@@ -329,7 +479,8 @@
                                         flip a coin
                                     </h4>
                                     <p class="">
-                                        No coins in your pocket? With our online coin flipper tool you can instantly flip coin.
+                                        No coins in your pocket? With our online coin flipper tool you can instantly
+                                        flip coin.
                                         <br>
                                     </p>
                                 </div>
@@ -359,7 +510,7 @@
                                 </div>
                                 <div class="card-read-more">
                                     <a href="dice.html" class="btn btn-link btn-block">
-                                       START
+                                        START
                                     </a>
                                 </div>
                             </div>
@@ -374,7 +525,7 @@
                                         Random Led Glow
                                     </h4>
                                     <p class="">
-                                        random color blinking light for fun 
+                                        random color blinking light for fun
                                         <br>
                                         <br>
                                     </p>
@@ -389,19 +540,19 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in-down">
                             <div class="card">
                                 <a class="img-card">
-                                    <img
-                                    src="Image/choice.jpg" />
-                            </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    Random choice picker
+                                    <img src="Image/choice.jpg" />
+                                </a>
+                                <div class="card-content">
+                                    <h4 class="card-title">
+                                        Random choice picker
 
-                                </h4>
-                                <p class="">
-                                    Have a tough choice to make? use the random choice generator make a quick decision for you
-                                    <br>
-                                </p>
-                            </div>
+                                    </h4>
+                                    <p class="">
+                                        Have a tough choice to make? use the random choice generator make a quick
+                                        decision for you
+                                        <br>
+                                    </p>
+                                </div>
                                 <div class="card-read-more">
                                     <a href="Choice_Picker.html" class="btn btn-link btn-block">
                                         Start
@@ -409,8 +560,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in-down">
                             <div class="card">
                                 <a class="img-card">
@@ -421,8 +572,8 @@
                                         Random Video Generator
                                     </h4>
                                     <p class="cfont">
-                                       To randomly generate video without ad 
-                                        
+                                        To randomly generate video without ad
+
                                     </p>
                                 </div>
                                 <div class="card-read-more">
@@ -432,24 +583,23 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in-down">
                             <div class="card">
                                 <a class="img-card">
-                                    <img
-                                    src="Image/grp.jpg" />
-                            </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    Random Group Generate
+                                    <img src="Image/grp.jpg" />
+                                </a>
+                                <div class="card-content">
+                                    <h4 class="card-title">
+                                        Random Group Generate
 
-                                </h4>
-                                <p class="cfont">
-                                    Make N teams from your M elements Input.
-                                    <br>
-                                </p>
-                            </div>
+                                    </h4>
+                                    <p class="cfont">
+                                        Make N teams from your M elements Input.
+                                        <br>
+                                    </p>
+                                </div>
                                 <div class="card-read-more">
                                     <a href="random_grp.html" class="btn btn-link btn-block">
                                         Start
@@ -460,18 +610,12 @@
 
 
                         <div class="col-xs-12 col-sm-12 col-md-12 counter">
-                          <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-                          <div class="elfsight-app-4fd7fe6a-6cdf-4cbf-9760-b150b9e803b1"></div>
-                        
+                            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                            <div class="elfsight-app-4fd7fe6a-6cdf-4cbf-9760-b150b9e803b1"></div>
+
                         </div>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -488,6 +632,20 @@
         AOS.init({
             offset: 150,
             duration: 500,
+        });
+    </script>
+
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            //Preloader
+            preloaderFadeOutTime = 500;
+            function hidePreloader() {
+                var preloader = $('.spinner-wrapper');
+                preloader.fadeOut(preloaderFadeOutTime);
+            }
+            hidePreloader();
         });
     </script>
 
