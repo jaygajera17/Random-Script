@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="icon" href="Image/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        html,
+        body {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+
+        .wrapper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container-fostrap {
+            display: table-cell;
+            background-color: #b1ade2;
+            background-image: linear-gradient(315deg, #b1ade2 0%, #7ddff8 74%);
+            padding: 1em;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        h1.heading {
+            color: #fff;
+            font-size: 1.15em;
+            font-weight: 900;
+            margin: 0 0 0.5em;
+            color: #505050;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                0px 8px 13px rgba(0, 0, 0, 0.1),
+                0px 18px 23px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 450px) {
+            h1.heading {
+                font-size: 3.55em;
+            }
+        }
+
+        @media (min-width: 760px) {
+            h1.heading {
+                font-size: 3.05em;
+            }
+        }
+
+        @media (min-width: 900px) {
+            h1.heading {
+                font-size: 3.25em;
+                margin: 0 0 0.3em;
+            }
+        }
+
+        .card {
+            display: block;
+            width: auto;
+            margin: 20px;
+            line-height: 1.42857143;
+            border-radius: 2px;
+            min-width: 15rem;
+            min-height: 300px;
+            padding: 1.5em .5em .5em;
+            border-radius: 2em;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+
+
+        .card img {
+            width: 65%;
+            border-radius: 20%;
+            margin: 0 auto;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        }
+
+        .cfont {
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .card:hover {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+
+        .gbtn {
+            margin-top: 8px;
+            font-size: 1.2rem;
+            transition: 0.5s ease;
+            /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+        }
+
+        .gbtn:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        /* .img-card {
+            width: 100%;
+            height: 225px;
+            min-width: 14rem;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .img-card img {
+            margin-top: 15px;
+            width: fit-content;
+            height: 200px;
+            object-fit: cover;
+            transition: all .25s ease;
+            filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+            border-radius:100px;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: left;
+
+        }
+
+        .card-content p {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+
+        .card-title {
+            font-family: 'Signika', sans-serif;
+            margin-top: 0px;
+            font-weight: 600;
+            font-size: 1.65em;
+        }
+
+        .card-title a {
+            color: #000;
+            text-decoration: none !important;
+        }
+
+        .card-read-more {
+            border-top: 1px solid #D4D4D4;
+        }
+
+        .card-read-more a {
+            text-decoration: none !important;
+            padding: 10px;
+            font-weight: 600;
+            text-transform: uppercase
+        }  */
+
+
+        .navbar {
+            background-color: black;
+            opacity: 0.9;
+            z-index: 999;
+            width: 100%;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .nav-item a {
+            color: white;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.5s ease;
+        }
+
+        .nav-item a:hover {
+            color: rgb(0, 195, 255);
+            border-bottom: 1px solid rgb(0, 195, 255);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        /* -------------counter------------------ */
+        .counter {
+
+            width: max-content;
+            margin: 0;
+            padding: 0;
+            border-radius: 16px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+        @media (min-width: 1008px) {
+            .counter {
+                margin-left: 33vw;
+            }
+
+        }
+
+        i{
+            font-size: 30px;
+            color: black;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrapper">
+        <div class="container-fostrap">
+            <div>
+                <h1 class="heading pt-5">
+                    Random Script
+                </h1>
+                <nav class="navbar fixed-top navbar-expand-lg navbar-dark" data-aos="zoom-out-left">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">Random Script</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="About.html">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Contact.html">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Exit</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in-down">
+                            <div class="card" style="width: 18rem;">
+                                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-grey-photo-placeholder-male-default-profile-gray-person-picture-isolated-white-background-good-man-102846161.jpg" class="card-img-top" alt="Dakshay Photo">
+                                <div class="card-body">
+                                    <h5 class="card-title">Solanki Dakshay</h5>
+                                    <p class="card-text">"Programs must be written for people to read, and only incidentally for machines to execute."</p>
+                                    <a href="https://github.com/DAKSHAY111" title="GitHub"><i class="fab fa-github"></i></a>
+                                    <a href="https://www.instagram.com/solanki_dakshay111/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                    <a href="dakshaysolanki@gmail.com.com"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.linkedin.com/in/dakshay-solanki-1b5716209/" title="Mail"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://dakshay111.github.io/solankidakshay.github.io/" class="btn gbtn btn-dark bg-dark text-white">View More</a>
+                                    <!-- <a href="https://dakshay111.github.io/solankidakshay.github.io/" title="Linkedin"><i class="fab fa-github"></i></a> -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in-down">
+                            <div class="card" style="width: 18rem;">
+                                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-grey-photo-placeholder-male-default-profile-gray-person-picture-isolated-white-background-good-man-102846161.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Jay Gajera</h5>
+                                    <p class="card-text">“Truth can only be found in one place: the code.”</p>
+                                    <a href="https://github.com/jaygajera17" title="GitHub"><i class="fab fa-github"></i></a>
+                                    <a href="https://www.instagram.com/jay_gajera_17/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                    <a href="gajerajay9@gmail.com"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.linkedin.com/in/jay-gajera-a6496b204" title="Mail"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="btn gbtn btn-dark bg-dark text-white">View More</a>
+                                </div>
+                            </div>
+</div>
+                        </div>
+                     
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration: 500,
+        });
+    </script>
+
+</body>
+
+</html>
