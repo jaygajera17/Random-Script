@@ -53,28 +53,26 @@
 
         h1.heading {
             color: #fff;
-            font-size: 1.15em;
+            font-size: 2.15em;
             font-weight: 900;
             margin: 0 0 0.5em;
             color: #505050;
-            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
-                0px 8px 13px rgba(0, 0, 0, 0.1),
-                0px 18px 23px rgba(0, 0, 0, 0.1);
+             text-shadow:0px 4px 5px rgba(0,0,0,0.31);
         }
 
-        @media (min-width: 450px) {
+        @media (max-width: 450px) {
             h1.heading {
                 font-size: 3.55em;
             }
         }
 
-        @media (min-width: 760px) {
+        @media (max-width: 760px) {
             h1.heading {
                 font-size: 3.05em;
             }
         }
 
-        @media (min-width: 900px) {
+        @media (max-width: 900px) {
             h1.heading {
                 font-size: 3.25em;
                 margin: 0 0 0.3em;
@@ -123,59 +121,7 @@
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
-        /* .img-card {
-            width: 100%;
-            height: 225px;
-            min-width: 14rem;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-            display: block;
-            overflow: hidden;
-        }
-
-        .img-card img {
-            margin-top: 15px;
-            width: fit-content;
-            height: 200px;
-            object-fit: cover;
-            transition: all .25s ease;
-            filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-            border-radius:100px;
-        }
-
-        .card-content {
-            padding: 15px;
-            text-align: left;
-
-        }
-
-        .card-content p {
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-        }
-
-        .card-title {
-            font-family: 'Signika', sans-serif;
-            margin-top: 0px;
-            font-weight: 600;
-            font-size: 1.65em;
-        }
-
-        .card-title a {
-            color: #000;
-            text-decoration: none !important;
-        }
-
-        .card-read-more {
-            border-top: 1px solid #D4D4D4;
-        }
-
-        .card-read-more a {
-            text-decoration: none !important;
-            padding: 10px;
-            font-weight: 600;
-            text-transform: uppercase
-        }  */
-
+        
 
         .navbar {
             background-color: black;
@@ -202,8 +148,10 @@
         }
 
         .nav-item a:hover {
+             
             color: rgb(0, 195, 255);
-            border-bottom: 1px solid rgb(0, 195, 255);
+            font-weight: bold;
+         
         }
 
         .navbar-brand {
@@ -246,7 +194,7 @@
         <div class="container-fostrap">
             <div>
                 <h1 class="heading pt-5">
-                    Random Script
+                   Developers
                 </h1>
                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" data-aos="zoom-out-left">
                     <div class="container">
@@ -259,16 +207,16 @@
                         <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link" aria-current="page" href="Menu.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="About.html">About</a>
+                                    <a class="nav-link active" href="About.html">About</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="Contact.html">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Exit</a>
+                                    <a class="nav-link" href="Menu.html">Exit</a>
                                 </li>
                             </ul>
                         </div>
