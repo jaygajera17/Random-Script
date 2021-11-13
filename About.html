@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>About</title>
     <link rel="icon" href="Image/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -186,10 +186,154 @@
             color: black;
             margin-right: 15px;
         }
+        
+        
+        /*---------------------PreLoader-----------------------------*/
+        
+         .spinner-wrapper {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: #000000;
+        }
+
+        h1.loader {
+            margin: 0;
+            padding: 0;
+            font-family: ‘Arial Narrow’, sans-serif;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: #a3e1f0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        h1.loader span {
+            position: relative;
+            top: 0.63em;
+            display: inline-block;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: rotateX(-90deg);
+        }
+
+        .let1 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.2s;
+        }
+
+        .let2 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.3s;
+        }
+
+        .let3 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.4s;
+        }
+
+        .let4 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.5s;
+
+        }
+
+        .let5 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.6s;
+        }
+
+        .let6 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.7s;
+        }
+
+        .let7 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.8s;
+        }
+        .let8 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .let9 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.1s;
+        }
+        .let10 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.2s;
+        }
+        .let11 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.3s;
+        }
+        .let12 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.4s;
+        }
+
+        .letspace{
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.9s;
+        }
+
+        @keyframes drop {
+            10% {
+                opacity: 0.5;
+            }
+
+            20% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            80% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0;
+                top: 6.94em
+            }
+        }
     </style>
 </head>
 
 <body>
+    
+    <div class="spinner-wrapper">
+        <h1 class="loader">
+            <span class="let1">R</span>
+            <span class="let2">a</span>
+            <span class="let3">n</span>
+            <span class="let4">d</span>
+            <span class="let5">o</span>
+            <span class="let6">m</span>
+            <span class="letspace"> </span>
+            <span class="let7">S</span>
+            <span class="let8">c</span>
+            <span class="let9">r</span>
+            <span class="let10">i</span>
+            <span class="let11">p</span>
+            <span class="let12">t</span>
+        </h1>
+    </div>
+
     <section class="wrapper">
         <div class="container-fostrap">
             <div>
