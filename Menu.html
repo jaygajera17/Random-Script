@@ -34,6 +34,12 @@
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
         }
+        
+         ::selection {
+            color:white;
+            background: black;
+            font-weight: 700;
+        }
 
         .wrapper {
             display: table;
@@ -183,8 +189,10 @@
         }
 
         .nav-item a:hover {
-            color: rgb(0, 195, 255);
-            border-bottom: 1px solid rgb(0, 195, 255);
+             color: rgb(0, 195, 255);
+            font-weight: bold;
+            transition: 0.5s ease-in-out;
+            
         }
 
         .navbar-brand {
