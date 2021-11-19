@@ -4,9 +4,6 @@
 
 - Random script project based on "Math.Random()" function.
 - we describe how useful "math.random()" function.
-
-
-### Use as tool :-
 -flip the coin
 -roll the dice
 -random password generator 
@@ -16,3 +13,5 @@
 -random video suggetion
 -random group maker 
 -etc..
+
+
