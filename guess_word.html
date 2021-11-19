@@ -1,0 +1,836 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Word</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
+        rel="stylesheet">
+    <script
+        src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+
+        .btn2 {
+            margin-left: 85px
+        }
+
+        #button:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .navbar {
+            background-color: black;
+            z-index: 999;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .nav-item a {
+            color: white;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.5s ease;
+        }
+
+        .nav-item a:hover {
+            color: rgb(0, 195, 255);
+            font-weight: bold;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .center {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background-color: #60dfcd;
+            background-image: linear-gradient(315deg, #60dfcd 0%, #1e9afe 74%);
+          
+        }
+
+        .box {
+        
+            margin: 20px;
+            width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+        #bgc {
+            border-bottom: 2px solid black;
+            font-size: 25px;
+        }
+
+
+        .gbtn {
+            margin: 25px 25px;
+            font-size: 1.2rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .gbtn:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .Smalltxt {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        #password {
+            padding: autp 5px;
+            user-select: none;
+            height: 50px;
+            width: auto;
+            border-radius: 6px;
+            border: none;
+            border: 2px solid #13061d;
+            outline: none;
+            font-size: 22px;
+            font-weight: 500;
+            text-align: center;
+            transition: 0.5s ease-in-out;
+        }
+
+        #password::placeholder {
+            font-size: 23px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 250px) {
+            #password {
+                width: 150px;
+                font-size: 15px;
+            }
+
+            #password::placeholder {
+                font-size: 15px;
+            }
+        }
+
+
+
+        #typeNumber {
+            display: inline;
+            width: 65px;
+            border: 2px solid black;
+        }
+
+
+        #toast {
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+            padding: 15px 50px;
+            background: black;
+            opacity: 0;
+            color: white;
+            font-weight: 500;
+            visibility: hidden;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            transition: 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1000;
+            bottom: 50px;
+        }
+
+
+
+
+        @keyframes letteranim {
+            50% {
+                transform: translateY(-5px) scale(1.05);
+            }
+        }
+
+        .letter {
+            display: inline-block;
+            color: transparent;
+            border-bottom: 5px solid #53bdff;
+            margin: 0 4px;
+            font-size: 40px;
+            padding: 10px;
+            transition: 0.5s;
+            text-transform: uppercase;
+
+        }
+
+        .word {
+            margin-left: -32px;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .correct {
+            color: #53bdff;
+            animation: letteranim 0.3s ease;
+        }
+
+        .guessForm {
+            margin: 20px auto 0;
+        }
+
+        .guessForm input,
+        .guessForm .guessButton {
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .guessForm input[type="text"] {
+            padding: autp 5px;
+            user-select: none;
+            height: 50px;
+            width: auto;
+            border-radius: 6px;
+            border: none;
+            border: 2px solid #13061d;
+            outline: none;
+            font-size: 22px;
+            font-weight: 500;
+            text-align: center;
+            font-family: 'Rubik', sans-serif;
+            transition: 0.5s ease-in-out;
+        }
+
+
+        @media screen and (max-width: 373px) {
+
+            .guessForm input[type="text"] {
+                width: 235px;
+            }
+
+            .letter {
+                font-size: 15px;
+            }
+
+            .center {
+                width: 114vw;
+                height: 114vh;
+            }
+
+        }
+
+        .guessForm .guessButton {
+            border: none;
+            font-size: 30px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #53bdff;
+            color: white;
+            transition: 0.3s;
+            margin: 10px 0;
+            text-shadow: 1px 2px 0 #20a9ff;
+        }
+
+        .guessForm .guessButton:hover {
+            background: #20a9ff;
+        }
+
+        .wrongLetters {
+            font-size: 20px;
+        }
+
+        .wrongLetters p {
+            margin-bottom: 10px;
+        }
+
+        .wrongLetters li {
+            display: inline-block;
+            font-size: 40px;
+            width: 45px;
+            background: #ff4d4d;
+            text-shadow: 1px 2px 0 red;
+            padding: 10px;
+            font-family: 'Rubik', sans-serif;
+            color: white;
+            text-transform: uppercase;
+            margin-right: 10px;
+            margin-top: 4px;
+            animation: letteranim 0.3s ease;
+        }
+
+        .message {
+            display: none;
+            padding: 20px;
+            position: absolute;
+            top: 110px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            border-radius: 5px;
+            background: #0091ec;
+            z-index: 12402402;
+        }
+
+        .message .h1 {
+            display: none;
+            color: white;
+            text-shadow: 1px 2px 0 #ccc;
+        }
+
+        .message .highlight {
+            color: yellow;
+            text-transform: capitalize;
+        }
+
+        .message .text {
+            color: white;
+            font-size: 30px;
+            display: none;
+        }
+
+        .message .text p {
+            color: white;
+        }
+
+        .message .text .highlight {
+            font-size: 40px;
+        }
+
+        .message .muted {
+            margin: 20px auto;
+            color: #86d1ff;
+        }
+
+        .spinner-wrapper {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: #000000;
+        }
+
+        h1.loader {
+            margin: 0;
+            padding: 0;
+            font-family: ‘Arial Narrow’, sans-serif;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: #a3e1f0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        h1.loader span {
+            position: relative;
+            top: 0.63em;
+            display: inline-block;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: rotateX(-90deg);
+        }
+
+        .let1 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.2s;
+        }
+
+        .let2 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.3s;
+        }
+
+        .let3 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.4s;
+        }
+
+        .let4 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.5s;
+
+        }
+
+        .let5 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.6s;
+        }
+
+        .let6 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.7s;
+        }
+
+        .let7 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.8s;
+        }
+        .let8 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .let9 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.1s;
+        }
+        .let10 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.2s;
+        }
+        .let11 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.3s;
+        }
+        .let12 {
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 2.4s;
+        }
+
+        .letspace{
+            animation: drop 2.4s ease-in-out infinite;
+            animation-delay: 1.9s;
+        }
+
+        @keyframes drop {
+            10% {
+                opacity: 0.5;
+            }
+
+            20% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            80% {
+                opacity: 1;
+                top: 3.78em;
+                transform: rotateX(-360deg);
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0;
+                top: 6.94em
+            }
+        }
+        
+    </style>
+</head>
+
+<header>
+
+    <h1 class="loader">
+        <span class="let1">R</span>
+        <span class="let2">a</span>
+        <span class="let3">n</span>
+        <span class="let4">d</span>
+        <span class="let5">o</span>
+        <span class="let6">m</span>
+        <span class="letspace"> </span>
+        <span class="let7">S</span>
+        <span class="let8">c</span>
+        <span class="let9">r</span>
+        <span class="let10">i</span>
+        <span class="let11">p</span>
+        <span class="let12">t</span>
+    </h1>
+</div>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" data-aos="fade-in">
+        <div class="container">
+            <a class="navbar-brand" href="#">Random Script</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="margin-right: 30px;" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="Menu.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Exit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="center d-flex align-items-center justify-content-center">
+    <div class="box bg-light" data-aos="zoom-out-left">
+        <div class="box2">
+            <div class="row">
+                <div class="col-lg-12 md-12 text-center mt-5">
+                    <div class="guess"></div>
+
+                </div>
+                <div class="col-lg-12 md-12 text-center mt-5">
+                    <form class="guessForm">
+                        <input type="text" class="guessLetter" maxlength="1" placeholder="Enter a letter . ." /> <button
+                            type="submit" class="btn gbtn btn-dark bg-dark text-white">Guess</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 md-12 text-center mt-5">
+                    <p>Hint: words are Movie related. <br />
+                    <p style="text-align: center ;">Made with &#10084;&#65039; by <span
+                            style="color: rgb(132, 0, 255); font-weight: 600;">Random Script</span> </p>
+                    </p>
+                </div>
+                <div class="wrong">
+                    <div class="wrongLetters"></div>
+                </div>
+                <div class="message">
+                    <h1 class="title"></h1>
+                    <p class="text"></p>
+                    <button class="btn gbtn btn-dark bg-dark text-white"><a href="javascript:location.reload(true)">Play Again?</a></button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="toast" data-aos="fade-in">Successfully Generated</div>
+
+</section>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            //Preloader
+            preloaderFadeOutTime = 500;
+            function hidePreloader() {
+                var preloader = $('.spinner-wrapper');
+                preloader.fadeOut(preloaderFadeOutTime);
+            }
+            hidePreloader();
+        });
+    </script>
+
+<script>
+
+    (function ($, window, undefined) {
+
+        Hangman = {
+            init: function (words) {
+                this.words = words,
+                    this.hm = $(".hangman"),
+                    this.msg = $(".message"),
+                    this.msgTitle = $(".title"),
+                    this.msgText = $(".text"),
+                    this.restart = $(".restart"),
+                    this.wrd = this.randomWord(),
+                    this.correct = 0,
+                    this.guess = $(".guess"),
+                    this.wrong = $(".wrong"),
+                    this.wrongGuesses = [],
+                    this.rightGuesses = [],
+                    this.guessForm = $(".guessForm"),
+                    this.guessLetterInput = $(".guessLetter"),
+                    this.goodSound = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/goodbell.mp3"),
+                    this.badSound = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/bad.mp3"),
+                    this.winSound = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/win.mp3"),
+                    this.loseSound = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/lose.mp3"),
+                    this.setup();
+            },
+
+
+            setup: function () {
+                this.binding();
+                this.sounds();
+                this.showGuess(this.wrongGuesses);
+                this.showWrong();
+
+            },
+
+
+            sounds: function () {
+                this.badSound.volume = .4;
+                this.goodSound.volume = .4;
+                this.winSound.volume = .8;
+                this.loseSound.volume = .4;
+
+            },
+
+
+            binding: function () {
+                this.guessForm.on("submit", $.proxy(this.theGuess, this));
+                this.restart.on("click", $.proxy(this.theRestart, this));
+            },
+
+
+            playSound: function (sound) {
+                this.stopSound(sound);
+                this[sound].play();
+            },
+
+
+            stopSound: function (sound) {
+                this[sound].pause();
+                this[sound].currentTime = 0;
+
+            },
+
+
+            theRestart: function (e) {
+                e.preventDefault();
+                this.stopSound("winSound");
+                this.stopSound("loseSound");
+                this.reset();
+            },
+
+
+            theGuess: function (e) {
+                e.preventDefault();
+                var guess = this.guessLetterInput.val();
+                if (guess.match(/[a-zA-Z]/) && guess.length == 1) {
+                    if ($.inArray(guess, this.wrongGuesses) > -1 || $.inArray(guess, this.rightGuesses) > -1) {
+                        this.playSound("badSound");
+                        this.guessLetterInput.val("").focus();
+                    }
+                    else if (guess) {
+                        var foundLetters = this.checkGuess(guess);
+                        if (foundLetters.length > 0) {
+                            this.setLetters(foundLetters);
+                            this.playSound("goodSound");
+                            this.guessLetterInput.val("").focus();
+                        } else {
+                            this.wrongGuesses.push(guess);
+                            if (this.wrongGuesses.length == 10) {
+                                this.lose();
+                            } else {
+                                this.showWrong(this.wrongGuesses);
+                                this.playSound("badSound");
+                            }
+                            this.guessLetterInput.val("").focus();
+                        }
+                    }
+                } else {
+                    this.guessLetterInput.val("").focus();
+                }
+            },
+
+            randomWord: function () {
+                return this._wordData(this.words[Math.floor(Math.random() * this.words.length)]);
+            },
+
+
+            showGuess: function () {
+                var frag = "<ul class='word'>";
+                $.each(this.wrd.letters, function (key, val) {
+                    frag += "<li data-pos='" + key + "' class='letter'>*</li>";
+                });
+                frag += "</ul>";
+                this.guess.html(frag);
+            },
+
+
+            showWrong: function (wrongGuesses) {
+                if (wrongGuesses) {
+                    var frag = "<ul class='wrongLetters'>";
+                    frag += "<p>Wrong Letters: </p>";
+                    $.each(wrongGuesses, function (key, val) {
+                        frag += "<li>" + val + "</li>";
+                    });
+                    frag += "</ul>";
+                }
+                else {
+                    frag = "";
+                }
+
+                this.wrong.html(frag);
+            },
+
+
+            checkGuess: function (guessedLetter) {
+                var _ = this;
+                var found = [];
+                $.each(this.wrd.letters, function (key, val) {
+                    if (guessedLetter == val.letter.toLowerCase()) {
+                        found.push(val);
+                        _.rightGuesses.push(val.letter);
+                    }
+                });
+                return found;
+
+            },
+
+
+            setLetters: function (letters) {
+                var _ = this;
+                _.correct = _.correct += letters.length;
+                $.each(letters, function (key, val) {
+                    var letter = $("li[data-pos=" + val.pos + "]");
+                    letter.html(val.letter);
+                    letter.addClass("correct");
+
+                    if (_.correct == _.wrd.letters.length) {
+                        _.win();
+                    }
+                });
+            },
+
+
+            _wordData: function (word) {
+
+                return {
+                    letters: this._letters(word),
+                    word: word.toLowerCase(),
+                    totalLetters: word.length
+                };
+            },
+
+
+            hideMsg: function () {
+                this.msg.hide();
+                this.msgTitle.hide();
+                this.restart.hide();
+                this.msgText.hide();
+            },
+
+
+            showMsg: function () {
+                var _ = this;
+                _.msg.show("blind", function () {
+                    _.msgTitle.show("bounce", "slow", function () {
+                        _.msgText.show("slide", function () {
+                            _.restart.show("fade");
+                        });
+
+                    });
+
+                });
+            },
+
+
+            reset: function () {
+                this.hideMsg();
+                this.init(this.words);
+                this.hm.find(".guessLetter").focus();
+
+            },
+
+
+            _letters: function (word) {
+                var letters = [];
+                for (var i = 0; i < word.length; i++) {
+                    letters.push({
+                        letter: word[i],
+                        pos: i
+                    });
+                }
+                return letters;
+            },
+
+
+            rating: function () {
+                var right = this.rightGuesses.length,
+                    wrong = this.wrongGuesses.length || 0,
+                    rating = {
+                        rating: Math.floor((right / (wrong + right)) * 100),
+                        guesses: (right + wrong)
+
+                    };
+                return rating;
+            },
+
+            win: function () {
+                var rating = this.rating();
+                this.msgTitle.html("Awesome, You Won!");
+                // this is messy
+                this.msgText.html("You solved the word in <span class='highlight'>" + rating.guesses + "</span> Guesses!<br>Score: <span class='highlight'>" + rating.rating + "%</span>");
+                this.showMsg();
+                this.playSound("winSound");
+
+            },
+
+
+            lose: function () {
+                this.msgTitle.html("You Lost.. The word was <span class='highlight'>" + this.wrd.word + "</span>");
+                this.msgText.html("Don't worry, you'll get the next one!");
+                this.showMsg();
+                this.playSound("loseSound");
+            }
+
+        };
+
+        var wordList = ["BellBottom", "Shiddat", "Sooryavanshi", "Dhamaka", "bhuj", "shershaah", "mimi", "Hungama 2", "The Big Bull", "radhe", "Laxmii", "Guilty", "Thappad", "malang", "roohi", "kagaz", "baaghi", "chhapaak",  "eternals",  "panga"];
+
+        Hangman.init(wordList);
+
+    })(jQuery, window);
+
+
+
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 150,
+        duration: 500,
+    });
+</script>
+
+</body>
+
+</html>
