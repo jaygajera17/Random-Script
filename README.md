@@ -1,6 +1,6 @@
 # WDW_Project_CE038_CE042_CE119
 
-### Key Points :-
+### description :-
 
 - Random script project based on "Math.Random()" function.
 - we describe how useful "math.random()" function.
