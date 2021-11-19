@@ -4,7 +4,7 @@
 
 - Random script project based on "Math.Random()" function.
 - we describe how useful "math.random()" function.
-- Project [Demo](https://youtu.be/o3EQcmu0-Yc)
+
 
 ### Use as tool :-
 
