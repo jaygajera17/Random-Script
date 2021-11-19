@@ -7,14 +7,12 @@
 
 
 ### Use as tool :-
-
 -flip the coin
 -roll the dice
-
 -random password generator 
 -random qr code generator
 -random color generator
 -random choice picker
 -random video suggetion
 -random group maker 
-- etc..
+-etc..
