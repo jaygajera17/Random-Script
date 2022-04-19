@@ -22,5 +22,5 @@
 
 ### Top Contributors
 
-[@Jay Gajera](https://github.com/jaygajera17)
+[@Jay Gajera](https://www.linkedin.com/in/jay-gajera-a6496b204/)
 [@Dakshay Solanki](https://github.com/DAKSHAY111)
