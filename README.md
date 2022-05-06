@@ -14,7 +14,7 @@
 - random video suggetion
 - random group maker 
 - etc..
-- visit: https://jaygajera17.github.io/WDW_Project_CE038_CE042_CE119/
+- visit: https://jaygajera17.github.io/Random-Script/
 
 ### Preview
   
