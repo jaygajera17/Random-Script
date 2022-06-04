@@ -1,11 +1,12 @@
-# Random-Script
+<h1 align="center"> Random-Script </h1>
 <h3 align="center">This Open-Source repository is about making Random things or tools which is helpful in someways</h3>
 
 ####  Open Source Instructions
 
 1. Create a fork.
 2. add your js file in  script.js , add html+css file keep outside.
-3. make card of your new tool in menu.html and give valid href of your new added files
+3. make card of your new tool in menu.html and give valid href of your newly added files
+4. make sure it will work
 5. update the readme file
 6. send a pull request
 
@@ -38,6 +39,6 @@
 ![Random-Script](https://github.com/jaygajera17/WDW_Project_CE038_CE042_CE119/blob/main/Image/readme.jpg)
 
 ### Top Contributors
-
-[@Jay Gajera](https://www.linkedin.com/in/jay-gajera-a6496b204/)
-[@Dakshay Solanki](https://github.com/DAKSHAY111)
+<a href="https://github.com/jaygajera17/Random-Script/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jaygajera17/Random-Script" />
+</a>
