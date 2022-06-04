@@ -1,4 +1,21 @@
 # Random-Script
+<h3 align="center">This Open-Source repository is about making Random things or tools which is helpful in someways</h3>
+
+####  Open Source Instructions
+
+1. Create a fork.
+2. add your js file in  script.js , add html+css file keep outside.
+3. make card of your new tool in menu.html and give valid href of your new added files
+5. update the readme file
+6. send a pull request
+
+# Tech Stack
+
+![HTML](https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)
+![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+<img alt="Bootstrap" src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+
 
 ### description :-
 
