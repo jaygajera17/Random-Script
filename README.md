@@ -1,13 +1,15 @@
 <h1 align="center"> Random-Script </h1>
 <h3 align="center">This Open-Source repository is about making Random things or tools which is helpful in someways</h3>
 
+visit All Tool: https://jaygajera17.github.io/Random-Script/
+ 
 ####  Open Source Instructions
 
 1. Create a fork.
 2. add your js file in  script.js , add html+css file keep outside.
 3. make card of your new tool in menu.html and give valid href of your newly added files
 4. make sure it will work
-5. update the readme file
+5. update the readme by add your Topic  
 6. send a pull request
 
 # Tech Stack
@@ -18,21 +20,20 @@
 <img alt="Bootstrap" src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 
 
-### description :-
-
-- Random script project based on "Math.Random()" function.
-- we describe how useful "math.random()" function.
-- example 👇
-- flip the coin
-- roll the dice
-- random password generator 
-- random qr code generator
-- random color generator
-- random choice picker
-- random video suggetion
-- random group maker 
-- etc..
-- visit: https://jaygajera17.github.io/Random-Script/
+### Tool list :-
+| No            | Name Of Random Tool                                           |  
+| ------------- |:---------------------------------------------------------------| 
+| 1             | Random QR code Generator |
+| 2             | Random Color Picker   |
+| 3             | Random Password Generator |
+| 4             | Flip a coin |
+| 5             | Roll a Dice|
+| 6             | Flip a coin |
+| 7             | Random LED Glow |
+| 8             | Random choice picker |
+| 9             | Random Youtube Video Generator |
+| 10            | Random Group Maker |
+| 11            | Guess Random Word Game |
 
 ### Preview
   
