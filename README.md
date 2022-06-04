@@ -1,5 +1,5 @@
 <h1 align="center"> Random-Script </h1>
-<h3 align="center">This Open-Source repository is about making Random things or tools which is helpful in someways</h3>
+<h3 align="center">This Open-Source repository is about making Any Random things or tools which is helpful in someways</h3>
 
 visit All Tool: https://jaygajera17.github.io/Random-Script/
  
@@ -8,7 +8,7 @@ visit All Tool: https://jaygajera17.github.io/Random-Script/
 1. Create a fork.
 2. add your js file in  script.js , add html+css file keep outside.
 3. make card of your new tool in menu.html and give valid href of your newly added files
-4. make sure it will work
+4. make sure your new tool display and  work well
 5. update the readme by add your Topic  
 6. send a pull request
 
